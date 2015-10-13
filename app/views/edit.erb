@@ -1,0 +1,9 @@
+<form action="/tasks/<%= @task.id %>" method="POST">
+  <div class="form-group">
+    <label for="exampleInputEmail1">Edit robot:</label><br/>
+    <input type="hidden" name="_method" value="PUT" />
+    <input type='text' name='robot[title]' value="<%= @robot.title %>" placeholder="Title"><br/>
+    <input type='text' name='robot[description]' value="<%= @robot.description %>" placeholder="Description"><br/>
+    <button type="submit" class="btn btn-default">Submit</button>
+  </div>
+</form>
