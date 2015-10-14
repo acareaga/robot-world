@@ -1,20 +1,21 @@
 class Robot
-  attr_reader :name,
+  attr_reader :id,
+              :name,
               :city,
               :state,
+              :avatar,
               :birthday,
-              :hire_date,
-              :department,
-              :id
+              :date_hired,
+              :department
 
   def initialize(data)
     @id         = data["id"]
     @name       = data["name"]
     @city       = data["city"]
     @state      = data["state"]
-    @birthday   = date["birthday"]
-
+    @avatar     = data["avatar"]
+    @birthday   = data["birthday"]
+    @date_hired = data["date_hired"]
     @department = data["department"]
-
   end
 end

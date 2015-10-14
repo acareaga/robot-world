@@ -7,15 +7,30 @@ class RobotWorld
       database['robots'] ||= []
       database['total']  ||= 0
       database['total']   += 1
-      database['robots'] << { "id" => database['total'], "title" => robot[:title], "description" => robot[:description] }
+      database['robots'] << { "id"         => database['total'],
+                              "name"       => robot[:name],
+                              "city"       => robot[:city],
+                              "state"      => robot[:state],
+                              "avatar"     => robot[:avatar],
+                              "birthday"   => robot[:birthday],
+                              "date_hired" => robot[:date_hired],
+                              "department" => robot[:department]
+                            }
     end
   end
 
   def self.update(id, data)
     database.transaction do
       target = database['robots'].find { |robot| robot["id"] == id }
-      target["title"] = robot[:title]
+      target["name"]        = robot[:name]
       target["description"] = data[:description]
+      target["name"]        = data[:name]
+      target["city"]        = data[:city]
+      target["state"]       = data[:state]
+      target["avatar"]      = data[:avatar]
+      target["birthday"]    = data[:birthday]
+      target["date_hired"]  = data[:date_hired]
+      target["department"]  = data[:department]
     end
   end
 

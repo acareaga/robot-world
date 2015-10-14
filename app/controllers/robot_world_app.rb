@@ -37,6 +37,10 @@ class RobotWorldApp < Sinatra::Base
     redirect '/robots'
   end
 
+  get '/robots/statistics' do
+    erb :statistics
+  end
+
   not_found do
     erb :error
   end
