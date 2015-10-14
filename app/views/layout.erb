@@ -6,6 +6,20 @@
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+
+  <div class='navbar navbar-default'>
+    <div class='row'>
+        <a href='/' class='navbar-brand col-md-offset-1'>Robot World</a>
+      <div class='col-md-4 col-md-offset-4'>
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href = "/"><i class='glyphicon glyphicon-home'></i></a></li>
+          <li><a href = "/robots">Robots</a></li>
+          <li><a href = "/robots/new">Create</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
   <%= yield %>
 
   <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
