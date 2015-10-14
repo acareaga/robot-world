@@ -7,12 +7,22 @@ robots:
   birthday: 12/12/01
   date_hired: 10/14/15
   department: Skiing
-- id: 2
-  name: 
-  city: ''
-  state: ''
-  avatar: ''
-  birthday: ''
-  date_hired: ''
-  department: ''
-total: 2
+  description: 
+  avatar: 
+- id: 4
+  name: Joe
+  city: Seattle
+  state: WA
+  avatar: animal
+  birthday: 01/10/31
+  date_hired: 10/14/15
+  department: Toilets
+- id: 5
+  name: Hector
+  city: New York
+  state: NY
+  avatar: Shark
+  birthday: 12/12/99
+  date_hired: 12/24/90
+  department: Streets
+total: 5
