@@ -22,7 +22,7 @@ class RobotWorld
   def self.update(id, data)
     database.transaction do
       target = database['robots'].find { |robot| robot["id"] == id }
-      target["name"]        = robot[:name]
+      target["name"]        = data[:name]
       target["description"] = data[:description]
       target["name"]        = data[:name]
       target["city"]        = data[:city]
