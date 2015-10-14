@@ -1,2 +1,11 @@
 ---
-robots: 
+robots:
+- id: 1
+  name: Bill
+  city: Denver
+  state: 'CO '
+  avatar: dog
+  birthday: 12/12/01
+  date_hired: 10/14/15
+  department: Skiing
+total: 1
