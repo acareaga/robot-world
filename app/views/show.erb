@@ -3,7 +3,11 @@
     <a href="/robots">Robot Roster</a>
   </div>
   <div class = 'row text-center'>
-    <h1><%= @robot.title %></h1>
-    <p><%= @robot.description %></p>
+    <h1>Name: <%= @robot.name %></h1>
+    <p>Birthplace: <%= @robot.city %>, <%= @robot.state %></p>
+    <p>Avatar: <img src="https://www.robohash.org/<%= @robot.avatar %>.png" >
+    <p>Birthday: <%= @robot.birthday %></p>
+    <p>Date Hired: <%= @robot.date_hired %></p>
+    <p>Department: <%= @robot.department %></p>
   </div>
 </div>
