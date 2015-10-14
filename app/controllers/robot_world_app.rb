@@ -1,9 +1,4 @@
-require 'models/robot_world'
-
 class RobotWorldApp < Sinatra::Base
-  set :root, File.expand_path("..", __dir__)
-  set :method_override, true
-
   get '/' do
     erb :dashboard
   end
@@ -39,6 +34,11 @@ class RobotWorldApp < Sinatra::Base
 
   get '/robots/statistics' do
     erb :statistics
+  end
+
+  delete '/robots/:id' do |id|
+    RobotWorld.delete(id.to_i)
+    redirect '/robots'
   end
 
   not_found do

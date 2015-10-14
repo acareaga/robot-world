@@ -1,5 +1,4 @@
 require 'yaml/store'
-require_relative 'robot'
 
 class RobotWorld
   def self.create(robot)
@@ -60,5 +59,12 @@ class RobotWorld
 
   def self.find(id)
     Robot.new(raw_robot(id))
+  end
+
+  def self.delete_all
+    database.transaction do
+      database['robots'] = []
+      database['total'] = 0
+    end
   end
 end
