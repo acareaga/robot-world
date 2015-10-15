@@ -1,3 +1,43 @@
 ---
-robots: []
-total: 0
+robots:
+- id: 1
+  name: Steve
+  city: Tacoma
+  state: WA
+  avatar: Bird
+  birthday: January 23, 1956
+  date_hired: October 1, 1998
+  department: Streets
+- id: 2
+  name: Lola
+  city: Boyd
+  state: CO
+  avatar: Dog
+  birthday: 04/23/2010
+  date_hired: 06/10/2010
+  department: Fun
+- id: 3
+  name: Kate
+  city: Boston
+  state: MA
+  avatar: Girl
+  birthday: 07/08/90
+  date_hired: 08/05/15
+  department: HealthCare
+- id: 4
+  name: Molly
+  city: Gig Harbor
+  state: WA
+  avatar: Dog
+  birthday: 04/23/05
+  date_hired: 12/20/05
+  department: Fun
+- id: 5
+  name: Mahi
+  city: Puyallup
+  state: WA
+  avatar: Cat
+  birthday: 10/10/04
+  date_hired: 03/25/05
+  department: Purrrrrr
+total: 5
