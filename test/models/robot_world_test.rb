@@ -1,7 +1,6 @@
 require_relative '../test_helper'
 
 class RobotWorldTest < Minitest::Test
-
   def test_robot_is_created
     RobotWorld.create({ :name       => "Joe",
                          :department => "Toilets"

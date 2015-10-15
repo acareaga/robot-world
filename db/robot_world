@@ -24,14 +24,6 @@ robots:
   birthday: 07/08/90
   date_hired: 08/05/15
   department: HealthCare
-- id: 4
-  name: Molly
-  city: Gig Harbor
-  state: WA
-  avatar: Dog
-  birthday: 04/23/05
-  date_hired: 12/20/05
-  department: Fun
 - id: 5
   name: Mahi
   city: Puyallup
