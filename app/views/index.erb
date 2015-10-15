@@ -2,7 +2,7 @@
   <div class='header text-center'>
     <h2>Robot Roster</h2>
   </div>
-  <div class='row'>
+  <table class="table table-hover">
     <% @robots.each do |robot| %>
     <div class="col-md-3">
       <img src="https://www.robohash.org/<%= robot.avatar %>.png" style="width:150px;height:150px;">
@@ -19,5 +19,5 @@
     </div>
 
     <% end %>
-  </div>
+  </table>
 </div>

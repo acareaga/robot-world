@@ -17,6 +17,10 @@ class RobotWorldApp < Sinatra::Base
     redirect '/robots'
   end
 
+  get '/robots/statistics' do
+    erb :statistics
+  end
+
   get '/robots/:id' do |id|
     @robot = RobotWorld.find(id.to_i)
     erb :show
@@ -30,10 +34,6 @@ class RobotWorldApp < Sinatra::Base
   put '/robots/:id' do |id|
     RobotWorld.update(id.to_i, params[:robot])
     redirect '/robots'
-  end
-
-  get '/robots/statistics' do
-    erb :statistics
   end
 
   delete '/robots/:id' do |id|
