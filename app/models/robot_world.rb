@@ -1,46 +1,36 @@
-require 'yaml/store'
-
 class RobotWorld
-  def self.create(robot)
-    database.transaction do
-      database['robots'] ||= []
-      database['total']  ||= 0
-      database['total']   += 1
-      database['robots'] << { "id"         => database['total'],
-                              "name"       => robot[:name],
-                              "city"       => robot[:city],
-                              "state"      => robot[:state],
-                              "avatar"     => robot[:avatar],
-                              "birthday"   => robot[:birthday],
-                              "date_hired" => robot[:date_hired],
-                              "department" => robot[:department]
-                            }
+  def self.database
+    if ENV["RACK_ENV"] == "test"
+      @database ||= Sequel.sqlite("db/robot_world_test.sqlite3")
+    else
+      @database ||= Sequel.sqlite("db/robot_world_development.sqlite3")
     end
+  end
+
+  def self.create(robot)
+    dataset.insert( name: robot[:name],
+                    city: robot[:city],
+                    state: robot[:state],
+                    avatar: robot[:avatar],
+                    birthday: robot[:birthday],
+                    date_hired: robot[:date_hired],
+                    department: robot[:department]
+                    )
   end
 
   def self.update(id, data)
-    database.transaction do
-      target = database['robots'].find { |robot| robot["id"] == id }
-      target["name"]        = data[:name]
-      target["description"] = data[:description]
-      target["name"]        = data[:name]
-      target["city"]        = data[:city]
-      target["state"]       = data[:state]
-      target["avatar"]      = data[:avatar]
-      target["birthday"]    = data[:birthday]
-      target["date_hired"]  = data[:date_hired]
-      target["department"]  = data[:department]
-    end
+    dataset.where(:id => id).update(name: robot[:name],
+                                    city: robot[:city],
+                                    state: robot[:state],
+                                    avatar: robot[:avatar],
+                                    birthday: robot[:birthday],
+                                    date_hired: robot[:date_hired],
+                                    department: robot[:department]
+                                    )
   end
 
   def self.delete(id)
-    database.transaction do
-      database['robots'].delete_if { |robot| robot['id'] == id }
-    end
-  end
-
-  def self.database
-    @database ||= YAML::Store.new("db/robot_world")
+    dataset.where(:id => id).delete
   end
 
   def self.raw_robots
@@ -50,7 +40,8 @@ class RobotWorld
   end
 
   def self.all
-    raw_robots.map { |data| Robot.new(data) }
+    robots = dataset.to_a
+    robots.map { |data| Robot.new(data) }
   end
 
   def self.raw_robot(id)
@@ -58,13 +49,10 @@ class RobotWorld
   end
 
   def self.find(id)
-    Robot.new(raw_robot(id))
+    Robot.new(dataset.where(:id => id).to_a.first)
   end
 
-  def self.delete_all
-    database.transaction do
-      database['robots'] = []
-      database['total'] = 0
-    end
+  def self.dataset
+    database.from(:tasks)
   end
 end
