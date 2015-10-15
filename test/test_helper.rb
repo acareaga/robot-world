@@ -1,4 +1,4 @@
-ENV['TASK_MANAGER_ENV'] ||= 'test'
+ENV['ROBOT_WORLD_ENV'] ||= 'test'
 
 require File.expand_path("../../config/environment", __FILE__)
 require 'minitest/autorun'
