@@ -16,7 +16,6 @@ class RosterTest < FeatureTest
     click_button "Submit"
 
     assert page.has_content?("Skiing")
-
   end
 
   def test_user_can_click_robot
@@ -25,7 +24,7 @@ class RosterTest < FeatureTest
 
     assert_equal '/robots', current_path
     within(".row") do
-      assert page.click_link_or_button("Dog")
+      assert page.click_link_or_button("edit")
     end
   end
 end
