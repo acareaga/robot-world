@@ -9,14 +9,15 @@ class RobotWorldTest < Minitest::Test
                           :avatar     => "#{i+1} avatar",
                           :birthday   => "#{i+1} birthday",
                           :date_hired => "#{i+1} date hired",
-                          :department => "#{i+1} department"})
+                          :department => "#{i+1} department"
+                        })
     end
   end
 
   def test_robot_is_created
     create_robots(1)
 
-    robot = RobotWorld.find(1)
+    robot = RobotWorld.find(RobotWorld.all.first.id)
 
     assert_equal "1 name", robot.name
     assert_equal "1 department", robot.department
@@ -24,19 +25,29 @@ class RobotWorldTest < Minitest::Test
   end
 
   def test_robot_update
-    skip
     create_robots(1)
 
-    RobotWorld.update(1, {name: "jimbo", department: "cleaning"})
+    RobotWorld.update(RobotWorld.all.first.id, {  name: "Joe",
+                                                  city: "Tacoma",
+                                                  state: "Washington",
+                                                  avatar: "CP30",
+                                                  birthday: "07/09/92",
+                                                  date_hired: "10/10/10",
+                                                  department: "VFX"
+                                                })
 
-    robot = RobotWorld.find(1)
+    robot = RobotWorld.find(RobotWorld.all.first.id)
 
-    assert_equal "jimbo", robot.name
-    assert_equal "cleaning", robot.department
+    assert_equal "Joe", robot.name
+    assert_equal "Tacoma", robot.city
+    assert_equal "Washington", robot.state
+    assert_equal "CP30", robot.avatar
+    assert_equal "07/09/92", robot.birthday
+    assert_equal "10/10/10", robot.date_hired
+    assert_equal "VFX", robot.department
   end
 
   def test_it_finds_all_robots
-    skip
     create_robots(2)
 
     assert_equal 2, RobotWorld.all.count
@@ -45,7 +56,9 @@ class RobotWorldTest < Minitest::Test
   def test_it_finds_a_robot_by_id
     create_robots(2)
 
-    assert_equal "1 name", RobotWorld.find(1).name
+    robot = RobotWorld.find(RobotWorld.all.first.id)
+
+    assert_equal "1 name", robot.name
   end
 
   def test_it_deletes_a_robot

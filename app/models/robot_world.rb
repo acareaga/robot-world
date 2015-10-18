@@ -13,23 +13,16 @@ class RobotWorld
 
   def self.create(robot)
     dataset.insert( name: robot[:name],
-                   city: robot[:city],
-                   state: robot[:state],
-                   avatar: robot[:avatar],
-                   birthday: robot[:birthday],
-                   date_hired: robot[:date_hired],
-                   department: robot[:department] )
+                    city: robot[:city],
+                    state: robot[:state],
+                    avatar: robot[:avatar],
+                    birthday: robot[:birthday],
+                    date_hired: robot[:date_hired],
+                    department: robot[:department] )
   end
 
   def self.update(id, data)
-    dataset.where(:id => id).update(name: robot[:name],
-                                    city: robot[:city],
-                                    state: robot[:state],
-                                    avatar: robot[:avatar],
-                                    birthday: robot[:birthday],
-                                    date_hired: robot[:date_hired],
-                                    department: robot[:department]
-                                    )
+    dataset.where(:id => id).update(data)
   end
 
   def self.delete(id)
