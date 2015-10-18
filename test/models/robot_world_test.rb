@@ -4,6 +4,11 @@ class RobotWorldTest < Minitest::Test
   def create_robots(num)
     num.times do |i|
       RobotWorld.create({ :name       => "#{i+1} name",
+                          :city       => "#{i+1} city",
+                          :state      => "#{i+1} state",
+                          :avatar     => "#{i+1} avatar",
+                          :birthday   => "#{i+1} birthday",
+                          :date_hired => "#{i+1} date hired",
                           :department => "#{i+1} department"})
     end
   end
@@ -38,14 +43,12 @@ class RobotWorldTest < Minitest::Test
   end
 
   def test_it_finds_a_robot_by_id
-    skip
     create_robots(2)
 
-    assert_equal "1 name", RobotWorld.find(1).title
+    assert_equal "1 name", RobotWorld.find(1).name
   end
 
   def test_it_deletes_a_robot
-    skip
     create_robots(3)
     total = RobotWorld.all.count
 

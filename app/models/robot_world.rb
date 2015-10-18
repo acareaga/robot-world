@@ -7,15 +7,18 @@ class RobotWorld
     end
   end
 
+  def self.dataset
+    database.from(:robots)
+  end
+
   def self.create(robot)
     dataset.insert( name: robot[:name],
-                    city: robot[:city],
-                    state: robot[:state],
-                    avatar: robot[:avatar],
-                    birthday: robot[:birthday],
-                    date_hired: robot[:date_hired],
-                    department: robot[:department]
-                    )
+                   city: robot[:city],
+                   state: robot[:state],
+                   avatar: robot[:avatar],
+                   birthday: robot[:birthday],
+                   date_hired: robot[:date_hired],
+                   department: robot[:department] )
   end
 
   def self.update(id, data)
@@ -53,6 +56,6 @@ class RobotWorld
   end
 
   def self.dataset
-    database.from(:tasks)
+    database.from(:robots)
   end
 end
