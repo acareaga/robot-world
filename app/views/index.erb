@@ -1,23 +1,21 @@
-<div class="container">
-  <div class='header text-center'>
-    <h2>Robot Roster</h2>
-  </div>
-  <table class="table table-hover">
-    <% @robots.each do |robot| %>
-    <div class="col-md-3">
-      <img src="https://www.robohash.org/<%= robot.avatar %>.png" style="width:150px;height:150px;">
-    </div>
-
-    <div class="jumbotron col-md-9">
-      <h3><%= robot.id %>: <a href="/robots/<%= robot.id %>"><%= robot.name %></a></h3>
-      <a href="/robots/<%= robot.id %>/edit">Edit</a>
-
-      <form action='/robots/<%= robot.id %>' method='POST' >
-        <input type='hidden' name='_method' value='delete'>
-        <input type='submit' value='Delete'>
-      </form>
-    </div>
-
-    <% end %>
-  </table>
+<div class='header text-center'>
+  <h2>Robot Roster</h2>
 </div>
+<table class="table table-hover">
+  <% @robots.each do |robot| %>
+  <div class="col-md-3">
+    <img src="https://www.robohash.org/<%= robot.avatar %>.png" style="width:150px;height:150px;">
+  </div>
+
+  <div class="jumbotron col-md-9">
+    <h3><%= robot.id %>: <a href="/robots/<%= robot.id %>"><%= robot.name %></a></h3>
+    <a href="/robots/<%= robot.id %>/edit">Edit</a>
+
+    <form action='/robots/<%= robot.id %>' method='POST' >
+      <input type='hidden' name='_method' value='delete'>
+      <input type='submit' value='Delete'>
+    </form>
+  </div>
+
+  <% end %>
+</table>

@@ -15,34 +15,32 @@ class UserSeesAllRobotsTest < FeatureTest
   end
 
   def test_new_robot_creation
-    skip
     visit("/")
     click_link("New Robot")
 
-    fill_in("robot-name", with: "Joe")
-    fill_in("robot-department", with: "VFX")
+    fill_in("Name", with: "Joe")
+    fill_in("Department", with: "VFX")
     assert_equal "/robots/new", current_path
-    click_button("Create Robot")
+    click_button("Submit")
     assert_equal "/robots", current_path
 
     within(".container") do
-      assert page.has_content?("new robot")
+      assert page.has_content?("Robot Roster")
     end
   end
 
   def test_user_can_edit_a_robot
-    skip
     create_robots(1)
 
     visit "/robots"
     click_link("Edit")
-    fill_in("robot-name", with: "Joe")
-    fill_in("robot-deparment", with: "VFX")
-    click_button("Update Robot")
+    fill_in("Name", with: "Joe")
+    fill_in("Department", with: "VFX")
+    click_button("Submit")
 
-    assert_equal "/robots/#{RobotWorld.all.first.id}", current_path
+    assert_equal "/robots", current_path
     within(".container") do
-      assert page.has_content?("new robot edited")
+      assert page.has_content?("Robot Roster")
     end
   end
 
